@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iftekhar's Finance Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="images/site logo.png">
+</head>
+<body>
+    <div class="container">
+        <h1>Iftekhar's Finance Tracker</h1>
+        
+        <div class="summary">
+            <div class="card income-card" title="Click to see all Income">
+                <h3>Total Income</h3>
+                <p id="total-income">৳0</p>
+            </div>
+            <div class="card expense-card" title="Click to see all Expense">
+                <h3>Total Expense</h3>
+                <p id="total-expense">৳0</p>
+            </div>
+            <div class="card balance-card" title="Click to reset filters">
+                <h3>Balance</h3>
+                <p id="total-balance">৳0</p>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <input type="date" id="date">
+            <input type="text" id="desc" placeholder="Description">
+            <input type="number" id="amount" placeholder="Amount">
+            <select id="type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+            <button onclick="addData()" class="add-btn">Add Record</button>
+        </div>
+
+        <div class="filter-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" onkeyup="updateUI()" placeholder="Search by name...">
+            </div>
+            <div class="date-filter">
+                <span>From:</span>
+                <input type="date" id="startDate" onchange="updateUI()">
+                <span>To:</span>
+                <input type="date" id="endDate" onchange="updateUI()">
+                <button onclick="resetFilters()" class="reset-btn">Reset Filters</button>
+            </div>
+        </div>
+
+        <div class="visuals">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-list"></tbody>
+                </table>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="financeChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
